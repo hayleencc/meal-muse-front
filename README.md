@@ -4,14 +4,7 @@ This is a project to share recipes with other people. At least for the MVP, the 
 
 ## Technologies
 - React
-- Redux
-- Redux Thunk
-- Axios
 - Material UI
-- React Router
-- Formik
-- Yup
-- React Testing Library
 - Jest
 
 ## How to run the frontend
