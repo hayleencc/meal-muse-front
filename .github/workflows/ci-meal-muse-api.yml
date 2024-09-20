@@ -1,0 +1,43 @@
+name:  Meal Muse Frontend CI
+
+on: 
+    push:
+        branches:
+            - main
+    pull_request:
+
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+            pull-requests: write
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+
+            - name: Install dependencies
+              run:
+                  npm install
+
+            - name: Run linters
+              run: 
+                  npm run lint
+
+            - name: Run tests
+              run: 
+                  npx vitest run --coverage
+
+            - name: Report coverage
+              uses: davelosert/vitest-coverage-report-action@v2
+              with:
+                json-summary-path: coverage/coverage-summary.json
+                json-final-path: coverage/coverage-final.json
+
+            
